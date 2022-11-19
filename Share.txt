@@ -1,4 +1,4 @@
-QUI
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 package conversioni;
 
 import java.io.BufferedReader;
@@ -45,9 +45,9 @@ public class Conversioni {
        int basePartenza = tastiera2.nextInt();
        
        int x = toDecimale(numero,basePartenza);
-       System.out.println("Il numero in base 10 e': " + x);
+       System.out.println(x);
    }
     
         
 }
-
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
