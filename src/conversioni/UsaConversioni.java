@@ -10,16 +10,85 @@ import java.util.Scanner;
  */
 public class UsaConversioni {
     public static void main(String[] args) throws IOException{
+        int basePartenza = 0, baseArrivo = 0;
+        String numero = null;
         System.out.println("('1') Inserimento dati");
         System.out.println("('2') Calcolo e visualizzazzione conversione");
         System.out.println("('3') Salvare i dati su file");
+        System.out.println("('4') Uscita programma");
         System.out.println("-Inserisci scelta-");
         Scanner tast = new Scanner(System.in);
         int scelta = tast.nextInt();
+        if(scelta != 1 && scelta != 2 && scelta != 3 && scelta != 4){
+            throw new RuntimeException("valore fuori scala");
+        }
+        
         switch(scelta) {
             case 1:
+                System.out.flush();
                 //Inserimento dati
+                do{
+                    System.out.println("Inserisci la base di partenza del numero: ");
+                    Scanner tastiera1 = new Scanner(System.in);
+                    basePartenza = tastiera1.nextInt();
+               
+                    System.out.println("Inserisci la base di arrivo: ");
+                    Scanner tastiera2 = new Scanner(System.in);
+                    baseArrivo = tastiera2.nextInt();
+
+                    System.out.println("Inserisci il numero: ");
+                    Scanner tastiera = new Scanner(System.in);
+                    numero = tastiera.nextLine();
+                }while(numero==null);
+                break;
+            case 2:
+            switch (basePartenza) {
+                case 2:
+                    if(baseArrivo == 8){
+           
+                    }else if(baseArrivo == 10){
+                        int x = toDecimale(numero,2);
+                    }else if(baseArrivo == 16){
+           
+                    }
+                    break;
+                case 8:
+                    if(baseArrivo == 2){
+           
+                    }else if(baseArrivo == 10){
+                        int x = toDecimale(numero,8);
+                    }else if(baseArrivo == 16){
+                        
+                    }   break;
+                case 10:
+                    if(baseArrivo == 2){
+           
+                    }else if(baseArrivo == 8){
+               
+                    }else if(baseArrivo == 16){
+                        
+                    }   break;
+                case 16:
+                    if(baseArrivo == 2){
+           
+                    }else if(baseArrivo == 8){
+                
+                    }else if(baseArrivo == 10){
+                        int x = toDecimale(numero,16);
+                    }
+                    break;
+                default:
+                    break;
+            }
             break;
-   }
+
+            case 3:
+                //visualozzazione file
+            break;
+            case 4:
+                //uscita
+            break;
+        }
+    }
 }
     
