@@ -10,9 +10,10 @@ import java.util.Scanner;
  */
 public class UsaConversioni {
     public static void main(String[] args) throws IOException{
-        int basePartenza = 0, baseArrivo = 0;
-        String numero = null;
+        int basePartenza = 0, baseArrivo = 0, resto = 0, appo = 0;
+        String numero=null;
         boolean exit = false;
+        
         do{
             System.out.println("('1') Inserimento dati");
             System.out.println("('2') Calcolo e visualizzazzione conversione");
@@ -40,7 +41,12 @@ public class UsaConversioni {
                     numero = tastiera.nextLine();
                     break;
                 case 2:
-                    
+                    if(baseArrivo!=10){
+                        appo = toDecimale(numero, basePartenza);
+                    }
+                    do{
+                        resto = appo % baseArrivo;
+                    }while(appo == 0);
                 case 3:
                     //visualozzazione file
                 break;
@@ -51,3 +57,4 @@ public class UsaConversioni {
         }while(!exit);
     }
 }
+
