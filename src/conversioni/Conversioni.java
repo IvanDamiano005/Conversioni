@@ -14,10 +14,8 @@ public class Conversioni {
    private int basePartenza;
    private int baseArrivo;
    private String numero;
+   public static final char[] vet= new char[]{'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
    
-    /**
-     *
-     */
     public Conversioni(int basePartenza, int baseArrivo, String numero){
        this.basePartenza=basePartenza;
        this.baseArrivo=baseArrivo;
@@ -44,23 +42,6 @@ public class Conversioni {
         Scanner tastiera = new Scanner(System.in);
         numero = tastiera.nextLine();
    }
-   
-    public String toBinario(int numero){
-       String s="";
-       while(numero!=0){
-           if(numero%2==0){
-               s="0"+s;
-           }else{
-               s="1"+s;
-               numero--;
-           }
-           numero = numero/2;
-       }
-       if(s==""){
-           s="0";
-       }
-       return s;
-    }
 
     public static int toDecimale(String numero, int basePartenza){
        int lunghezzaNumero = numero.length();
@@ -76,5 +57,9 @@ public class Conversioni {
            potenza=potenza*basePartenza;
         }
        return num;
-    }     
+    }
+    
+    public static int fromDecimale(String numero, int baseArrivo){
+        
+    }
 }
