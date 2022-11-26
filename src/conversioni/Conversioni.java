@@ -11,10 +11,9 @@ import java.util.Scanner;
  */
 public class Conversioni {
     
-   private int basePartenza;
-   private int baseArrivo;
-   private String numero;
-   public static final char[] vet= new char[]{'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
+    private int basePartenza;
+    private int baseArrivo;
+    private String numero;
    
     public Conversioni(int basePartenza, int baseArrivo, String numero){
        this.basePartenza=basePartenza;
@@ -27,6 +26,14 @@ public class Conversioni {
            return(int)c - '0';
        else
            return(int)c - 'A' + 10;
+    }
+    
+    public static char reVal(int num)
+    {
+        if (num >= 0 && num <= 9)
+            return (char)(num + 48);
+        else
+            return (char)(num - 10 + 65);
     }
    
     public void acquisisciDati(){
@@ -59,7 +66,14 @@ public class Conversioni {
        return num;
     }
     
-    public static int fromDecimale(String numero, int baseArrivo){
-        
+    public static String fromDecimale(int numero, int baseArrivo){
+        StringBuilder x = new StringBuilder ();
+        int resto = 0;
+        do{
+            resto = numero % baseArrivo;
+            x.append(resto);
+            numero /= baseArrivo;
+        }while(numero != 0);
+        return new String(x.reverse());
     }
 }
