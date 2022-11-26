@@ -1,5 +1,6 @@
-package conversioni;
+package Conversioni;
 
+import static conversioni.Conversioni.fromDecimale;
 import static conversioni.Conversioni.toDecimale;
 import java.io.IOException;
 import java.util.Scanner;
@@ -10,11 +11,11 @@ import java.util.Scanner;
  */
 public class UsaConversioni {
     public static void main(String[] args) throws IOException{
-        int basePartenza = 0, baseArrivo = 0, resto = 0, appo = 0;
-        String numero=null;
+        int basePartenza = 0, baseArrivo = 0, appo = 0;
+        String numero = null, appo1 = null;
         boolean exit = false;
         
-        do{
+        do{ 
             System.out.println("('1') Inserimento dati");
             System.out.println("('2') Calcolo e visualizzazzione conversione");
             System.out.println("('3') Salvare i dati su file");
@@ -41,12 +42,14 @@ public class UsaConversioni {
                     numero = tastiera.nextLine();
                     break;
                 case 2:
-                    if(baseArrivo!=10){
+                       if(baseArrivo!=10){
                         appo = toDecimale(numero, basePartenza);
+                        appo1 = fromDecimale(appo, baseArrivo);
+                        System.out.println("Il numero in base: " + baseArrivo + " e': " + appo1);
+                    }else{
+                        int x=toDecimale(numero, basePartenza);
+                        System.out.println("Il numero in base 10 e': " + x);
                     }
-                    do{
-                        resto = appo % baseArrivo;
-                    }while(appo == 0);
                 case 3:
                     //visualozzazione file
                 break;
@@ -57,4 +60,3 @@ public class UsaConversioni {
         }while(!exit);
     }
 }
-
