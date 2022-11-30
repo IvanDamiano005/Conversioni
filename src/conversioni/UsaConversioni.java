@@ -2,7 +2,11 @@ package Conversioni;
 
 import static conversioni.Conversioni.fromDecimale;
 import static conversioni.Conversioni.toDecimale;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -24,7 +28,7 @@ public class UsaConversioni {
             Scanner tast = new Scanner(System.in);
             int scelta = tast.nextInt();
             if(scelta != 1 && scelta != 2 && scelta != 3 && scelta != 4){
-                throw new RuntimeException("valore fuori scala");
+                throw new RuntimeException("inserire una scelta valida");
             }
 
             switch(scelta) {
@@ -51,7 +55,19 @@ public class UsaConversioni {
                         System.out.println("Il numero in base 10 e': " + x);
                     }
                 case 3:
-                    //visualozzazione file
+                    FileWriter fout = new FileWriter("Conversioni.txt");
+                    PrintWriter out = new PrintWriter(fout);
+                    out.println(appo1);
+                    fout.close();
+                    
+                    FileReader fin = new FileReader("Conversioni.txt");
+                    BufferedReader in = new BufferedReader(fin);
+                    String riga = in.readLine();
+                    while(riga != null){
+                        System.out.println(riga);
+                        riga = in.readLine();
+                    }
+                    fin.close();
                 break;
                 case 4:
                     exit = true;
