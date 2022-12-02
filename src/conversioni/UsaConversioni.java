@@ -55,19 +55,10 @@ public class UsaConversioni {
                         System.out.println("Il numero in base 10 e': " + x);
                     }
                 case 3:
-                    FileWriter fout = new FileWriter("Conversioni.txt");
+                    FileWriter fout = new FileWriter("Conversioni.txt", true);
                     PrintWriter out = new PrintWriter(fout);
-                    out.println(appo1);
+                    out.println("Il numero che hai appena convertito e': " + appo1);
                     fout.close();
-                    
-                    FileReader fin = new FileReader("Conversioni.txt");
-                    BufferedReader in = new BufferedReader(fin);
-                    String riga = in.readLine();
-                    while(riga != null){
-                        System.out.println(riga);
-                        riga = in.readLine();
-                    }
-                    fin.close();
                 break;
                 case 4:
                     exit = true;
