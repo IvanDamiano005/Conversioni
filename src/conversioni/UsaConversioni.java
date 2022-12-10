@@ -1,9 +1,8 @@
 package Conversioni;
 
+import static conversioni.Conversioni.acquisisciDati;
 import static conversioni.Conversioni.fromDecimale;
 import static conversioni.Conversioni.toDecimale;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,51 +14,55 @@ import java.util.Scanner;
  */
 public class UsaConversioni {
     public static void main(String[] args) throws IOException{
-        int basePartenza = 0, baseArrivo = 0, appo = 0;
+        int basePartenza = 0, baseArrivo = 0, appo = 0, x = 0, scelta;
         String numero = null, appo1 = null;
         boolean exit = false;
         
         do{ 
-            System.out.println("('1') Inserimento dati");
-            System.out.println("('2') Calcolo e visualizzazzione conversione");
-            System.out.println("('3') Salvare i dati su file");
-            System.out.println("('4') Uscita programma");
-            System.out.println("-Inserisci scelta-");
-            Scanner tast = new Scanner(System.in);
-            int scelta = tast.nextInt();
-            if(scelta != 1 && scelta != 2 && scelta != 3 && scelta != 4){
-                throw new RuntimeException("inserire una scelta valida");
-            }
-
+            scelta = acquisisciDati();
+            
+            Scanner tastiera = new Scanner(System.in);
+            Scanner tastiera1 = new Scanner(System.in);
+            Scanner tastiera2 = new Scanner(System.in);
+            
             switch(scelta) {
                 case 1:
-                    System.out.println("Inserisci la base di partenza del numero: ");
-                    Scanner tastiera1 = new Scanner(System.in);
-                    basePartenza = tastiera1.nextInt();
-
-                    System.out.println("Inserisci la base di arrivo: ");
-                    Scanner tastiera2 = new Scanner(System.in);
-                    baseArrivo = tastiera2.nextInt();
-
+                    do{
+                        System.out.println("Inserisci la base di partenza del numero: ");
+                        basePartenza = tastiera.nextInt();
+                    }while(basePartenza < 2 || basePartenza > 16);    
+                        
+                    do{
+                        System.out.println("Inserisci la base di arrivo: ");
+                        baseArrivo = tastiera1.nextInt();
+                    }while(baseArrivo < 2 || baseArrivo > 16);
+                        
                     System.out.println("Inserisci il numero: ");
-                    Scanner tastiera = new Scanner(System.in);
-                    numero = tastiera.nextLine();
+                    numero = tastiera2.nextLine();
+                    
                     break;
                 case 2:
-                       if(baseArrivo!=10){
+                    if(baseArrivo!=10){
                         appo = toDecimale(numero, basePartenza);
                         appo1 = fromDecimale(appo, baseArrivo);
                         System.out.println("Il numero in base: " + baseArrivo + " e': " + appo1);
                     }else{
-                        int x=toDecimale(numero, basePartenza);
+                        x = toDecimale(numero, basePartenza);
                         System.out.println("Il numero in base 10 e': " + x);
                     }
+                break;
+                
                 case 3:
                     FileWriter fout = new FileWriter("Conversioni.txt", true);
                     PrintWriter out = new PrintWriter(fout);
-                    out.println("Il numero che hai appena convertito e': " + appo1);
+                    if(baseArrivo != 10){
+                        out.println("Il numero che hai appena convertito e': " + appo1);
+                    }else{
+                        out.println("Il numero che hai appena convertito e': " + x);
+                    }
                     fout.close();
                 break;
+                
                 case 4:
                     exit = true;
                 break;
