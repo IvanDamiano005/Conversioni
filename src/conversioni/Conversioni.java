@@ -1,8 +1,5 @@
 package conversioni;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -36,18 +33,21 @@ public class Conversioni {
             return (char)(num - 10 + 65);
     }
    
-    public void acquisisciDati(){
-        System.out.println("Inserisci la base di partenza del numero: ");
-        Scanner tastiera1 = new Scanner(System.in);
-        basePartenza = tastiera1.nextInt();
-                
-        System.out.println("Inserisci la base di arrivo: ");
-        Scanner tastiera2 = new Scanner(System.in);
-        baseArrivo = tastiera2.nextInt();
-
-        System.out.println("Inserisci il numero: ");
-        Scanner tastiera = new Scanner(System.in);
-        numero = tastiera.nextLine();
+    public static int acquisisciDati(){
+        Scanner tast = new Scanner(System.in);
+        
+        System.out.println("('1') Inserimento dati");
+        System.out.println("('2') Calcolo e visualizzazzione conversione");
+        System.out.println("('3') Salvare i dati su file");
+        System.out.println("('4') Uscita programma");
+        System.out.println("-Inserisci scelta-");
+        
+        int scelta = tast.nextInt();
+        
+        if(scelta != 1 && scelta != 2 && scelta != 3 && scelta != 4){
+            throw new RuntimeException("inserire una scelta valida");
+        }
+        return scelta;
    }
 
     public static int toDecimale(String numero, int basePartenza){
