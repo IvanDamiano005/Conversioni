@@ -24,15 +24,7 @@ public class Conversioni {
        else
            return(int)c - 'A' + 10;
     }
-    
-    public static char reVal(int num)
-    {
-        if (num >= 0 && num <= 9)
-            return (char)(num + 48);
-        else
-            return (char)(num - 10 + 65);
-    }
-   
+  
     public static int acquisisciDati(){
         Scanner tast = new Scanner(System.in);
         
